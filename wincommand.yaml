@@ -1,0 +1,11 @@
+---
+- hosts: win
+  tasks:
+  - name: execute command on windoes
+    win_command: whoami
+    register: output
+  - debug: msg="{{output.stdout}}"
+  - name: win shell
+    win_shell: echo %COMPUTERNAME%
+    args:
+     executable: cmd
